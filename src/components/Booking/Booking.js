@@ -1,11 +1,29 @@
-import React from "react";
-import { bookings } from "./bookings";
+import React, { useState, useEffect } from "react";
 import Navbar from "../Navbar/Navbar";
 
 const Booking = () => {
-  const approvedPayments = bookings.filter(
-    (booking) => booking.paymentStatus === "Paid"
-  );
+  const [bookings, setBookings] = useState([]);
+  const [approvedPayments, setApprovedPayments] = useState([]);
+
+  useEffect(() => {
+    fetchBookings();
+  }, []);
+
+  const fetchBookings = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/api/bookings");
+      if (!response.ok) {
+        throw new Error("Failed to fetch bookings");
+      }
+      const data = await response.json();
+      setBookings(data);
+      setApprovedPayments(
+        data.filter((booking) => booking.paymentStatus === "Paid")
+      );
+    } catch (error) {
+      console.error("Error fetching bookings:", error);
+    }
+  };
 
   const containerStyle = {
     fontFamily: "Arial, sans-serif",

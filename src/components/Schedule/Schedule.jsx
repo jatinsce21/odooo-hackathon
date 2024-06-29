@@ -1,36 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import moment from "moment";
 import "./Schedule.css";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 
 const Schedule = () => {
-  const [events, setEvents] = useState([
-    {
-      id: 1,
-      date: new Date(),
-      title: "Sample Event",
-      facility: "Tennis Court",
-      status: "Approved",
-    },
-    {
-      id: 2,
-      date: new Date(new Date().setDate(new Date().getDate() + 1)),
-      title: "Another Event",
-      facility: "Basketball Court",
-      status: "Pending",
-    },
-    {
-      id: 3,
-      date: new Date(new Date().setDate(new Date().getDate() + 2)),
-      title: "Third Event",
-      facility: "Soccer Field",
-      status: "Approved",
-    },
-  ]);
+  const [events, setEvents] = useState([]);
 
-  const handleCancelEvent = (id) => {
-    setEvents(events.filter((event) => event.id !== id));
+  useEffect(() => {
+    fetchEvents();
+  }, []);
+
+  const fetchEvents = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/api/events");
+      if (!response.ok) {
+        throw new Error("Failed to fetch events");
+      }
+      const data = await response.json();
+      setEvents(data);
+    } catch (error) {
+      console.error("Error fetching events:", error);
+    }
+  };
+
+  const handleCancelEvent = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:8000/api/events/${id}`, {
+        method: "DELETE",
+      });
+      if (!response.ok) {
+        throw new Error("Failed to cancel event");
+      }
+      setEvents(events.filter((event) => event.id !== id));
+    } catch (error) {
+      console.error("Error cancelling event:", error);
+    }
   };
 
   const getStatusColor = (status) => {
@@ -49,7 +54,6 @@ const Schedule = () => {
       <Navbar />
       <div className="schedule-container">
         <h1>Sports Facility Schedule</h1>
-
         <div className="scheduled-events">
           <h2>Scheduled Events</h2>
           <table>
