@@ -4,7 +4,7 @@ from log_in import login_model
 from log_in import logging_utilities as kamnu
 import mysql.connector
 from log_in import owner_logging_utilities
-
+import os
 
 app = APIRouter()
 
@@ -14,7 +14,7 @@ def connect_to_mysql():
         connection = mysql.connector.connect(
             host='127.0.0.1',
             user='root',
-            password='d239dbopal',
+            password=os.getenv('DB_PASSWORD'),
             database='oddo'
         )
           
@@ -64,6 +64,7 @@ def logging_in(owner_info:login_model.owner_logging_detials):
     token=kamnu.create_jwt_token_user(db,owner_info.email_id)
     return JSONResponse(content={"message": message,
                                  "token":token})
+
 
 
 
