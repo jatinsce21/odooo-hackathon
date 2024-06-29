@@ -1,0 +1,75 @@
+.schedule-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    color:white;
+    margin-Top:100px;
+    align-content:center;
+  }
+  
+  .scheduled-events {
+    margin-top: 20px;
+  }
+  
+  .scheduled-events table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .scheduled-events th,
+  .scheduled-events td {
+    border: 1px solid #b7b7b7;
+    padding: 12px;
+    color:white;
+    text-align: left;
+  }
+  
+  .scheduled-events th {
+    background-color: #f2f2f2;
+    color:black;
+    font-weight: bold;
+  }
+  
+  .scheduled-events tr:nth-child(even) {
+    background-color: #f8f8f8;
+  }
+  
+  .scheduled-events button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .scheduled-events button:hover {
+    background-color: #c82333;
+  }
+  
+  h1, h2 {
+    color:white;
+  }
+  
+  h1 {
+    border-bottom: 2px solid white;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .status {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+  
+  .status-approved {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .status-pending {
+    background-color: #ffc107;
+    color: white;
+  }

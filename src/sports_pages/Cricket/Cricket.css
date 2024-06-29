@@ -1,0 +1,54 @@
+*{
+background-color: #030303;
+}
+
+.cricket__content {
+    padding: 20px;
+    text-align: center;
+    margin-top: 90px;
+    color: aliceblue;
+  }
+  
+  .cricket__places {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .cricket__place {
+    background-color: #000000;
+    color: aliceblue;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(255, 254, 254, 0.981);
+
+    padding: 20px;
+    
+    width: 300px;
+    text-align: left;
+
+  }
+  
+  .cricket__place h2 {
+    margin-bottom: 10px;
+  }
+  
+  .cricket__place p {
+    margin: 5px 0;
+  }
+
+  .book-now-button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .book-now-button:hover {
+    background-color: #0056b3;
+  }
+  
