@@ -2,8 +2,9 @@ import crypt
 import re
 import jwt
 from datetime import datetime, timedelta
+import os
 
-SECRET_KEY = "nh4ct087q34mpcfht4891340uyt9145h0gn9ucv19cmr4-813-0u980-4764759ungcv94y5n89c1h34-tn3780ruc93tcgy8-m9p34ucygntv1m-3894cf-uy5gm-01g4"
+SECRET_KEY=os.getenv('SECRET_KEY')
 
 def create_jwt_token_user(conn,email_id,secret_key: str = SECRET_KEY):
     """

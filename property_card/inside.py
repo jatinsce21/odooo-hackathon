@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 import mysql.connector
 from property_card import  model
-
+import os
 app=APIRouter()
 
 def connect_to_mysql():
@@ -10,7 +10,7 @@ def connect_to_mysql():
         connection = mysql.connector.connect(
             host='127.0.0.1',
             user='root',
-            password='d239dbopal',
+            password=os.getenv('DB_PASSWORD'),
             database='oddo'
         )
           

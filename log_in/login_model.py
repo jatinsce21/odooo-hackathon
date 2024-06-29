@@ -22,3 +22,4 @@ class ownerdetails(BaseModel):
 class owner_logging_detials(BaseModel):
     email_id:str
     password:str
+
